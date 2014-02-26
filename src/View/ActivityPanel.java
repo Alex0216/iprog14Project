@@ -2,6 +2,7 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 /**
  * Created by group11 on 25/02/14.
@@ -9,12 +10,24 @@ import java.awt.*;
  * of the activity, the duration or the start time of the activity depending
  * where the view is. The view also has a color corresponding to the activity.
  * Clicking an activity should bring the EditActivityFrame
- * <p/>
- * NOTE: I'm not sure about the JLable, but I think it will be simpler like
- * that
  */
-public class ActivityLabel extends JLabel implements ListCellRenderer {
+public class ActivityPanel extends JPanel implements ListCellRenderer {
+	
+	private JLabel lblTime;
+	private JLabel lblName;
+	
+	public ActivityPanel() {
+		setLayout(new BorderLayout(0, 0));
+		
+		lblTime = new JLabel("Time");
+		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
+		add(lblTime, BorderLayout.WEST);
+		
+		lblName = new JLabel("Name");
+		lblName.setHorizontalAlignment(SwingConstants.CENTER);
+		add(lblName, BorderLayout.CENTER);
 
+	}
 
     /*
     This is the method we have to override the customize how the activity will
@@ -24,4 +37,11 @@ public class ActivityLabel extends JLabel implements ListCellRenderer {
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         return null;
     }
+    
+	public JLabel getLblTime() {
+		return lblTime;
+	}
+	public JLabel getLblName() {
+		return lblName;
+	}
 }
