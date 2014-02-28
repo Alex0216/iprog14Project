@@ -20,7 +20,7 @@ public class ActivityBankPanel extends JPanel {
     public ActivityBankPanel() {
         setLayout(new BorderLayout(300, 10));
 
-        listActivities = new activityJList();
+        listActivities = new ActivityJList();
 
         add(listActivities, BorderLayout.CENTER);
 

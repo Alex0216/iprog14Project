@@ -1,3 +1,5 @@
+import View.MainView;
+
 /**
  * Created by Group11 on 25/02/14.
  * <p/>
@@ -6,6 +8,6 @@
 public class main {
 
     public static void main(String[] args) {
-
+    	new MainView();
     }
 }
