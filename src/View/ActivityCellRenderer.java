@@ -14,12 +14,16 @@ import java.awt.*;
  */
 public class ActivityCellRenderer extends JPanel implements ListCellRenderer {
 
+    public static final int START_TIME = 0;
+    public static final int DURATION = 1;
+
     private JLabel lblTime;
 	private JLabel lblName;
+    private int format;
 
-    public ActivityCellRenderer() {
+    public ActivityCellRenderer(int format) {
         setLayout(new BorderLayout(10, 10));
-
+        this.format = format;
         lblTime = new JLabel("Time");
 		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
         lblTime.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -38,6 +42,16 @@ public class ActivityCellRenderer extends JPanel implements ListCellRenderer {
     @Override
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         Activity activity = (Activity) value;
+        String time;
+        switch (format) {
+            case START_TIME:
+                time = String.valueOf(activity.getLength()) + ":00";
+                break;
+            case DURATION:
+            default:
+                time = String.valueOf(activity.getLength()) + " min";
+
+        }
         lblTime.setText(String.valueOf(activity.getLength()) + " min");
         lblName.setText(activity.getName());
 

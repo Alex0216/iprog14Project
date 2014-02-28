@@ -1,11 +1,9 @@
 package View;
 
 import javax.swing.*;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.util.Date;
+import java.awt.*;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Group11 on 25/02/14.
@@ -19,10 +17,10 @@ public class DayPanel extends JPanel {
 	private JSpinner timeSpinner;
 	private JLabel lblEndTime;
 	private JLabel lblTotalTime;
-	private JList listDayActivities;
-	
-	
-	public DayPanel() {
+    private ActivityJList listDayActivities;
+
+
+    public DayPanel() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0};
@@ -75,10 +73,10 @@ public class DayPanel extends JPanel {
 		gbc_lblTotalTime.gridx = 1;
 		gbc_lblTotalTime.gridy = 2;
 		add(lblTotalTime, gbc_lblTotalTime);
-		
-		listDayActivities = new JList();
-		listDayActivities.setBorder(BorderFactory.createDashedBorder(listDayActivities.getForeground(), 8, 4));
-		GridBagConstraints gbc_listDayActivities = new GridBagConstraints();
+
+        listDayActivities = new ActivityJList();
+        listDayActivities.setCellRenderer(new ActivityCellRenderer(ActivityCellRenderer.START_TIME));
+        GridBagConstraints gbc_listDayActivities = new GridBagConstraints();
 		gbc_listDayActivities.gridwidth = 3;
 		gbc_listDayActivities.fill = GridBagConstraints.BOTH;
 		gbc_listDayActivities.gridx = 0;
@@ -95,7 +93,8 @@ public class DayPanel extends JPanel {
 	public JLabel getLblEndTime() {
 		return lblEndTime;
 	}
-	public JList getListDayActivities() {
-		return listDayActivities;
+
+    public ActivityJList getListDayActivities() {
+        return listDayActivities;
 	}
 }

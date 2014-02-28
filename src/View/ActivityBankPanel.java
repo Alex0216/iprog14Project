@@ -1,5 +1,7 @@
 package View;
 
+import Model.Activity;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,7 +14,7 @@ import java.awt.*;
  */
 public class ActivityBankPanel extends JPanel {
     private JButton btnAddActivity;
-    private JList listActivities;
+    private ActivityJList listActivities;
 
     /**
      * Create the panel.
@@ -21,6 +23,11 @@ public class ActivityBankPanel extends JPanel {
         setLayout(new BorderLayout(300, 10));
 
         listActivities = new ActivityJList();
+        listActivities.setCellRenderer(new ActivityCellRenderer(ActivityCellRenderer.DURATION));
+
+        DefaultListModel<Activity> listModel = (DefaultListModel<Activity>) listActivities.getModel();
+        listModel.addElement(new Activity("Introduction", "Intro to the meeting", 10, 0));
+        listModel.addElement(new Activity("Idea 1", "Presenting idea 1", 30, 1));
 
         add(listActivities, BorderLayout.CENTER);
 
@@ -29,9 +36,10 @@ public class ActivityBankPanel extends JPanel {
         btnAddActivity.setBackground(new Color(0, 178, 34));
         add(btnAddActivity, BorderLayout.NORTH);
 
+
     }
 
-    public JList getListActivities() {
+    public ActivityJList getListActivities() {
         return listActivities;
     }
 

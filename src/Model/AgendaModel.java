@@ -73,7 +73,6 @@ public class AgendaModel extends Observable {
         notifyObservers();
     }
 
-    ;
 
     /**
      * you can use this method to create some test data and test your implementation

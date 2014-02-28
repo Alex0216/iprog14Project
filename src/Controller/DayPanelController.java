@@ -8,7 +8,11 @@ import View.DayPanel;
  */
 public class DayPanelController {
 
-    public DayPanelController(AgendaModel model, DayPanel view) {
+    AgendaModel model;
+    DayPanel view;
 
+    public DayPanelController(AgendaModel model, DayPanel view) {
+        this.model = model;
+        this.view = view;
     }
 }
