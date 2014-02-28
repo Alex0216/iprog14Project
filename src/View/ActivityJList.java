@@ -10,9 +10,9 @@ import java.util.ArrayList;
  * Created by Alexandre on 27/02/14.
  * Project: Project.View.${FILE_NAME}
  */
-public class activityJList extends JList<activityJList.ActivityListModel> {
+public class ActivityJList extends JList<ActivityJList.ActivityListModel> {
 
-    public activityJList() {
+    public ActivityJList() {
         super();
 
         setForeground(new Color(255, 255, 255));
