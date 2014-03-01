@@ -2,7 +2,7 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,26 +17,41 @@ import javax.swing.JScrollPane;
  * Project: ${PROJECT_NAME}.${PACKAGE_NAME}.${FILE_NAME}
  */
 public class MainView extends JFrame {
-
+	
+	private JButton btnAddDay;
+	private ActivityBankPanel activityPanel;
+	private JScrollPane dayScrollPane;
+	private DaysPanel daysPanel;
+	
     public MainView() {
     	
-    	JPanel activityPanel = new ActivityBankPanel();
+    	activityPanel = new ActivityBankPanel();
     	getContentPane().add(activityPanel, BorderLayout.WEST);
     	
-    	JScrollPane dayScrollPane = new JScrollPane();
+    	dayScrollPane = new JScrollPane();
     	getContentPane().add(dayScrollPane, BorderLayout.CENTER);
     	
-    	JPanel daysPanel = new JPanel();
+    	daysPanel = new DaysPanel();
     	dayScrollPane.setViewportView(daysPanel);
     	
-    	JPanel defaultDayPanel = new DayPanel();
-    	FlowLayout flowLayout = (FlowLayout) defaultDayPanel.getLayout();
-    	flowLayout.setAlignOnBaseline(true);
-    	daysPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
-    	daysPanel.add(defaultDayPanel);
-    	
-    	JButton btnAddDay = new JButton("+ Add New Day");
-    	daysPanel.add(btnAddDay);
+    	btnAddDay = new JButton("+ Add New Day");
+    	dayScrollPane.setColumnHeaderView(btnAddDay);
 
+    }
+    
+    public DaysPanel getDaysPanel() {
+    	return daysPanel;
+    }
+    
+    public ActivityBankPanel getActivityPanel() {
+    	return activityPanel;
+    }
+    
+    public boolean isBtnAddDay(Object obj) {
+    	return obj == this.btnAddDay;
+    }
+    
+    public void addBtnAddDayActionListener(ActionListener l) {
+    	this.btnAddDay.addActionListener(l);
     }
 }

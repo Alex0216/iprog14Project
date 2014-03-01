@@ -1,3 +1,7 @@
+import javax.swing.JFrame;
+
+import Controller.MainController;
+import Model.AgendaModel;
 import View.MainView;
 
 /**
@@ -8,6 +12,13 @@ import View.MainView;
 public class main {
 
     public static void main(String[] args) {
-    	new MainView();
+    	MainView mainView = new MainView();
+    	
+    	JFrame window = mainView;
+    	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.pack();
+        window.setVisible(true);
+        
+        MainController mainViewController = new MainController(AgendaModel.getModelWithExampleData(), mainView);
     }
 }
