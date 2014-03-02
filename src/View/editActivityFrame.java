@@ -15,6 +15,7 @@ import java.awt.Button;
  * This is the view to create or modified an activity as shown on page 3 of the
  * powerpoint presentation. It can be use to either create a new activity or to
  * edit an existing one
+ * Edited by Jingxiang Gou 01/03/14, for items in JCombobox.
  */
 public class EditActivityFrame extends JFrame {
 	
@@ -75,6 +76,13 @@ public class EditActivityFrame extends JFrame {
     	gbc_comboTypeActivity.gridy = 3;
     	getContentPane().add(comboTypeActivity, gbc_comboTypeActivity);
     	
+        // TODO add items for the dropbox
+    	comboTypeActivity.addItem("1");
+    	comboTypeActivity.addItem("2");
+    	comboTypeActivity.addItem("3");
+    	comboTypeActivity.addItem("4");
+
+        
     	descriptionPane = new JEditorPane();
     	descriptionPane.setBorder(BorderFactory.createLineBorder(Color.black));
     	GridBagConstraints gbc_descriptionPane = new GridBagConstraints();
