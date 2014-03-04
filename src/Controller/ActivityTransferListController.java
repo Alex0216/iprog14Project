@@ -34,7 +34,7 @@ public class ActivityTransferListController extends TransferHandler {
      */
     @Override
     public int getSourceActions(JComponent source) {
-        System.out.println("** getSourceActions call");
+
         return TransferHandler.MOVE;
     }
 
@@ -58,7 +58,8 @@ public class ActivityTransferListController extends TransferHandler {
 
         if (source != list)
             return;
-        ((DefaultListModel) list.getModel()).remove(selected);
+        if (action == TransferHandler.MOVE)
+            ((DefaultListModel) list.getModel()).remove(selected);
 
     }
 
@@ -80,6 +81,8 @@ public class ActivityTransferListController extends TransferHandler {
         if (!canImport(supp)) {
             return false;
         }
+        if (!supp.isDrop())
+            return false;
 
         // Fetch the Transferable and its data
         Transferable t = supp.getTransferable();
@@ -94,7 +97,6 @@ public class ActivityTransferListController extends TransferHandler {
 
         // Fetch the drop location
         JList.DropLocation loc = (JList.DropLocation) supp.getDropLocation();
-
         // Insert the data at this location
         ((DefaultListModel) list.getModel()).add(loc.getIndex(), data);
 
