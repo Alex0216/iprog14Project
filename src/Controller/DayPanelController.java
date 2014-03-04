@@ -14,5 +14,6 @@ public class DayPanelController {
     public DayPanelController(AgendaModel model, DayPanel view) {
         this.model = model;
         this.view = view;
+        new ActivityTransferListController(view.getListDayActivities(), model);
     }
 }

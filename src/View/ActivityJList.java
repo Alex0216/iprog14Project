@@ -22,6 +22,7 @@ public class ActivityJList extends JList {
         setFixedCellHeight(50);
         setFixedCellWidth(100);
 
+
         DefaultListModel<Activity> listModel = new DefaultListModel<Activity>();
         setModel(listModel);
 

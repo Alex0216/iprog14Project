@@ -25,6 +25,7 @@ public class ActivityBankPanel extends JPanel {
         listActivities = new ActivityJList();
         listActivities.setCellRenderer(new ActivityCellRenderer(ActivityCellRenderer.DURATION));
 
+
         DefaultListModel<Activity> listModel = (DefaultListModel<Activity>) listActivities.getModel();
         listModel.addElement(new Activity("Introduction", "Intro to the meeting", 10, 0));
         listModel.addElement(new Activity("Idea 1", "Presenting idea 1", 30, 1));

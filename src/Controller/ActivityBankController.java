@@ -8,7 +8,8 @@ import View.ActivityBankPanel;
  */
 public class ActivityBankController {
 
-    public ActivityBankController(AgendaModel model, ActivityBankPanel view) {
 
+    public ActivityBankController(AgendaModel model, ActivityBankPanel view) {
+        new ActivityTransferListController(view.getListActivities(), model);
     }
 }
