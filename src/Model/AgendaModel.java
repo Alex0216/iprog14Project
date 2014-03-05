@@ -77,6 +77,13 @@ public class AgendaModel extends Observable {
         notifyObservers();
     }
 
+    public Day getDay(int index) {
+        return days.get(index);
+    }
+
+    public int getNbDays() {
+        return days.size();
+    }
 
     /**
      * you can use this method to create some test data and test your implementation

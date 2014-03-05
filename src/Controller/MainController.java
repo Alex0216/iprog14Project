@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.AgendaModel;
+import Model.Day;
 import View.DaysPanel;
 import View.MainView;
 
@@ -33,7 +34,8 @@ public class MainController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (this.mainView.isBtnAddDay(e.getSource())) {
-        	this.agendaModel.addDay(8, 0);
+            Day day = this.agendaModel.addDay(8, 0);
+            this.daysPanelController.addDay(day);
         }
     }
 }

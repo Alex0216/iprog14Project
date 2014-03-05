@@ -2,7 +2,6 @@ package Controller;
 
 import Model.Activity;
 import Model.ActivityTransferable;
-import Model.AgendaModel;
 import View.ActivityJList;
 
 import javax.swing.*;
@@ -16,12 +15,10 @@ import java.io.IOException;
  */
 public class ActivityTransferListController extends TransferHandler {
     private ActivityJList list;
-    private final AgendaModel model;
     int selected;
 
-    public ActivityTransferListController(ActivityJList list, AgendaModel model) {
+    public ActivityTransferListController(ActivityJList list) {
         this.list = list;
-        this.model = model;
         list.setDragEnabled(true);
         list.setDropMode(DropMode.INSERT);
         list.setTransferHandler(this);
