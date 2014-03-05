@@ -5,14 +5,14 @@ import Model.Activity;
 import javax.swing.*;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Alexandre on 27/02/14.
  * Project: Project.View.${FILE_NAME}
  */
-public class ActivityJList extends JList<ActivityJList.ActivityListModel> {
+public class ActivityJList extends JList {
+
 
     public ActivityJList() {
         super();
@@ -24,15 +24,13 @@ public class ActivityJList extends JList<ActivityJList.ActivityListModel> {
         setFixedCellHeight(50);
         setFixedCellWidth(100);
 
-        ActivityListModel listModel = new ActivityListModel(getTestData());
+
+        DefaultListModel<Activity> listModel = new DefaultListModel<Activity>();
         //ActivityListModel listModel = new ActivityListModel(data);
         setModel(listModel);
 
-        setCellRenderer(new ActivityCellRenderer());
     }
 
-    private ArrayList<Activity> getTestData() {
-        ArrayList<Activity> list = new ArrayList<Activity>();
 
         list.add(new Activity("Introduction", "Intro to the meeting", 10, 0));
         list.add(new Activity("Idea 1", "Presenting idea 1", 30, 0));

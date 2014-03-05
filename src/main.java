@@ -9,7 +9,7 @@ import javax.swing.*;
  * <p/>
  * This is the point of entry of the app
  */
-public class main {
+public class Main {
 
     public static void main(String[] args) {
         MainView mainView = new MainView(AgendaModel.getModelWithExampleData());
@@ -17,6 +17,7 @@ public class main {
         JFrame window = mainView;
     	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.pack();
+        window.setSize(800, 800);
         window.setVisible(true);
         
         MainController mainViewController = new MainController(AgendaModel.getModelWithExampleData(), mainView);
