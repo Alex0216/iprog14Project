@@ -4,7 +4,7 @@ import javax.swing.*;
 
 import Model.Activity;
 import Model.AgendaModel;
-import View.ActivityJList.ActivityListModel;
+import View.ActivityJList;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -57,7 +57,7 @@ public class ActivityBankPanel extends JPanel implements Observer{
 	public void update(Observable o, Object arg) {
 		// load all activities
 		this.listActivities.removeAll();
-		this.listActivities.addAllActivities(model.getParkedActivites());
+		//find a way to add all activity in the listModel
 				
 	}
 	

@@ -29,13 +29,7 @@ public class ActivityBankController implements ActionListener, MouseListener {
 		view.getListActivities().addMouseListener(this);
 		// TODO: perhaps add some possibility to change a given activity?
 
-		// controller displays the view
-		// TODO: add to main view not to new Frame
-		JFrame frame = new JFrame("Activities");		
-		frame.add(view);
-		frame.setVisible(true);
 
-		// XXX:controller close view when the window is closed?
 	}
 
 	@Override
@@ -44,6 +38,7 @@ public class ActivityBankController implements ActionListener, MouseListener {
 		// EditActivityController editViewController = new EditActivityController(model, new EditActivityFrame());
 		System.out.println("Hi");
 		model.addParkedActivity(new Activity("hi", "If I see this text, everything works and I'm soooo happy!", 2, 1));
+        EditActivityController controller = new EditActivityController(this.model);
 	}
 
 	@Override
@@ -51,7 +46,7 @@ public class ActivityBankController implements ActionListener, MouseListener {
 		JList list = (JList)e.getSource();
         if (e.getClickCount() == 2) {
             int index = list.locationToIndex(e.getPoint());
-            Activity selectedActivity = view.getListActivities().getElementAtIndex(index);
+            Activity selectedActivity = (Activity)view.getListActivities().getModel().getElementAt(index);
             // Open up EditActivityController with selected Activity
             System.out.println("open up");
             }
