@@ -35,6 +35,12 @@ public class EditActivityController implements ActionListener {
     public EditActivityController(AgendaModel model, Activity editActivity) {
         this(model);
         this.editActivity = editActivity;
+        
+        //
+        this.view.setActivityName(this.editActivity.getName());
+        this.view.setDuration(this.editActivity.getLength());
+        this.view.setDescription(this.editActivity.getDescription());
+        this.view.setActivityType(this.editActivity.getType());
     }
 
 

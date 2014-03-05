@@ -32,7 +32,7 @@ public class EditActivityFrame extends JFrame {
 
     public static final int EDIT = 0;
     public static final int NEW = 1;
-    private Component verticalStrut;
+	private Component verticalStrut;
     private JLabel lblName;
     private JLabel lblLength;
     private JLabel lblDescription;
@@ -156,7 +156,7 @@ public class EditActivityFrame extends JFrame {
         gbc_comboTypeActivity.gridy = 7;
         getContentPane().add(comboTypeActivity, gbc_comboTypeActivity);
 
-        // TODO add items for the dropbox
+        // TODO add items for the dropbox -> done?!
         comboTypeActivity.addItem("Presentation");
         comboTypeActivity.addItem("Group Work");
         comboTypeActivity.addItem("Discussion");
@@ -235,4 +235,23 @@ public class EditActivityFrame extends JFrame {
     public JLabel getLblErrorName() {
         return lblErrorName;
     }
+    
+    public void setActivityType(int index) {
+    	String type = (String)this.comboTypeActivity.getItemAt(index);
+		this.comboTypeActivity.getModel().setSelectedItem(type);
+	}
+
+	public void setActivityName(String name) {
+		this.txtActivityName.setText(name);
+	}
+
+	public void setDuration(int length) {
+		this.spinnerDuration.setValue(length);
+	}
+
+	public void setDescription(String lblDescription) {
+		this.descriptionPane.setText(lblDescription);
+	}
+    
+    
 }
