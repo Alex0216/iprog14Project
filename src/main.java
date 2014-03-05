@@ -1,8 +1,8 @@
-import javax.swing.JFrame;
-
 import Controller.MainController;
 import Model.AgendaModel;
 import View.MainView;
+
+import javax.swing.*;
 
 /**
  * Created by Group11 on 25/02/14.
@@ -12,9 +12,9 @@ import View.MainView;
 public class main {
 
     public static void main(String[] args) {
-    	MainView mainView = new MainView();
-    	
-    	JFrame window = mainView;
+        MainView mainView = new MainView(AgendaModel.getModelWithExampleData());
+
+        JFrame window = mainView;
     	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.pack();
         window.setVisible(true);

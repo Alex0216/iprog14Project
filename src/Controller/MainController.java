@@ -1,12 +1,11 @@
 package Controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import Model.AgendaModel;
-import View.ActivityBankPanel;
 import View.DaysPanel;
 import View.MainView;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Alexandre on 25/02/14.
@@ -27,9 +26,8 @@ public class MainController implements ActionListener {
     	
     	DaysPanel daysView = mainView.getDaysPanel();
     	this.daysPanelController = new DaysPanelController(this.agendaModel, daysView);
-    	
-    	ActivityBankPanel activityBankView = mainView.getActivityPanel();
-    	this.activityBankController = new ActivityBankController(this.agendaModel, activityBankView);
+
+        this.activityBankController = new ActivityBankController(this.agendaModel);
     }
     
     @Override

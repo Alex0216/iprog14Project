@@ -1,13 +1,10 @@
 package View;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
+import Model.AgendaModel;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Alexandre on 25/02/14.
@@ -22,11 +19,11 @@ public class MainView extends JFrame {
 	private ActivityBankPanel activityPanel;
 	private JScrollPane dayScrollPane;
 	private DaysPanel daysPanel;
-	
-    public MainView() {
-    	
-    	activityPanel = new ActivityBankPanel();
-    	getContentPane().add(activityPanel, BorderLayout.WEST);
+
+    public MainView(AgendaModel model) {
+
+        activityPanel = new ActivityBankPanel(model);
+        getContentPane().add(activityPanel, BorderLayout.WEST);
     	
     	dayScrollPane = new JScrollPane();
     	getContentPane().add(dayScrollPane, BorderLayout.CENTER);
