@@ -1,5 +1,6 @@
 package View;
 
+import Model.Activity;
 import Model.Day;
 
 import javax.swing.*;
@@ -131,6 +132,13 @@ public class DayPanel extends JPanel implements Observer {
             lblEndTime.setText(hour + ":" + minutes);
             //Length
             lblTotalTime.setText(String.valueOf(day.getTotalLength()) + " minutes");
+
+            //Updating the list
+            DefaultListModel<Activity> listModel = new DefaultListModel<Activity>();
+            for (Activity a : day.getActivities())
+                listModel.addElement(a);
+            //find a way to add all activity in the listModel
+            this.getListDayActivities().setModel(listModel);
         }
     }
 }

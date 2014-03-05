@@ -23,7 +23,7 @@ public class ActivityBankController implements ActionListener, MouseListener, Li
     public ActivityBankController(AgendaModel model, ActivityBankPanel view) {
         this.model = model;
         this.view = view;
-        new ActivityTransferListController(this.view.getListActivities());
+        new ActivityTransferListController(this.view.getListActivities(), null, model);
         // attach listeners to "Add Activity" - Button
         view.getBtnAddActivity().addActionListener(this);
         view.getListActivities().addMouseListener(this);
