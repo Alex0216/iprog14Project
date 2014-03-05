@@ -12,7 +12,8 @@ import javax.swing.*;
 public class Main {
 
     public static void main(String[] args) {
-        MainView mainView = new MainView(AgendaModel.getModelWithExampleData());
+        AgendaModel model = AgendaModel.getModelWithExampleData();
+        MainView mainView = new MainView(model);
 
         JFrame window = mainView;
     	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -20,6 +21,6 @@ public class Main {
         window.setSize(800, 800);
         window.setVisible(true);
         
-        MainController mainViewController = new MainController(AgendaModel.getModelWithExampleData(), mainView);
+        MainController mainViewController = new MainController(model, mainView);
     }
 }

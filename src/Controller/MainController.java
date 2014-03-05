@@ -27,7 +27,7 @@ public class MainController implements ActionListener {
     	DaysPanel daysView = mainView.getDaysPanel();
     	this.daysPanelController = new DaysPanelController(this.agendaModel, daysView);
 
-        this.activityBankController = new ActivityBankController(this.agendaModel);
+        this.activityBankController = new ActivityBankController(this.agendaModel, mainView.getActivityPanel());
     }
     
     @Override

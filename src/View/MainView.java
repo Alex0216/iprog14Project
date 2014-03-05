@@ -23,6 +23,7 @@ public class MainView extends JFrame {
     public MainView(AgendaModel model) {
 
         activityPanel = new ActivityBankPanel(model);
+        activityPanel.setPreferredSize(new Dimension(300, 500));
         getContentPane().add(activityPanel, BorderLayout.WEST);
     	
     	dayScrollPane = new JScrollPane();

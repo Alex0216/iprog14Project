@@ -24,13 +24,15 @@ public class EditActivityController implements ActionListener {
 
     	this.model = model;
     	this.view = new EditActivityFrame();
+        view.setSize(400, 600);
+        view.setVisible(true);
 
         this.view.getBtnCancel().addActionListener(this);
         this.view.getBtnSave().addActionListener(this);
 
     }
 
-    public EditActivityController(AgendaModel model, EditActivityFrame view, Activity editActivity) {
+    public EditActivityController(AgendaModel model, Activity editActivity) {
         this(model);
         this.editActivity = editActivity;
     }
@@ -41,6 +43,7 @@ public class EditActivityController implements ActionListener {
         //Just close the window
         if (e.getSource().equals(this.view.getBtnCancel()))
             view.dispose();
+
         if (e.getSource().equals(this.view.getBtnSave())) {
             String name = view.getTxtActivityName().getText();
             int length = (Integer) view.getSpinnerDuration().getValue();
@@ -61,6 +64,8 @@ public class EditActivityController implements ActionListener {
                 editActivity.setLength(length);
                 editActivity.setType(type);
             }
+
+            view.dispose();
         }
 
     }

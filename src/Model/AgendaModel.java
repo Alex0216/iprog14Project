@@ -6,15 +6,15 @@ import java.util.Observable;
 
 public class AgendaModel extends Observable {
 
-	public static String notificationMsgDayAdded = "DayAdded";
-	
+    public static String notificationMsgDayAdded = "DayAdded";
+
     List<Day> days = new ArrayList<Day>();
     List<Activity> parkedActivites = new ArrayList<Activity>();
 
     public List<Activity> getParkedActivites() {
-		return parkedActivites;
-	}
-    
+        return parkedActivites;
+    }
+
     /**
      * adds create and add a new day to model with starting time (hours and minutes)
      */
@@ -91,6 +91,10 @@ public class AgendaModel extends Observable {
         model.addActivity(new Activity("Idea 1 discussion", "Discussing the results of idea 1", 15, 2), d, 3);
         model.addActivity(new Activity("Coffee break", "Time for some coffee", 20, 3), d, 4);
 
+        model.addParkedActivity(new Activity("ParkedAct1", "test", 10, 0));
+        model.addParkedActivity(new Activity("ParkedAct2", "test", 10, 0));
+        model.addParkedActivity(new Activity("ParkedAct3", "test", 10, 0));
+        model.addParkedActivity(new Activity("ParkedAct4", "test", 10, 0));
         return model;
     }
 }

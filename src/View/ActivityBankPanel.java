@@ -1,13 +1,10 @@
 package View;
 
-import javax.swing.*;
-
 import Model.Activity;
 import Model.AgendaModel;
-import View.ActivityJList;
 
+import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -18,10 +15,10 @@ import java.util.Observer;
  * activityView. In this container the activityView should show the duration of
  * the activity.
  */
-public class ActivityBankPanel extends JPanel implements Observer{
-    
-	private JButton btnAddActivity;
-	private ActivityJList listActivities;
+public class ActivityBankPanel extends JPanel implements Observer {
+
+    private JButton btnAddActivity;
+    private ActivityJList listActivities;
     private AgendaModel model;
 
     /**
@@ -30,18 +27,18 @@ public class ActivityBankPanel extends JPanel implements Observer{
     public ActivityBankPanel(AgendaModel model) {
         setLayout(new BorderLayout(300, 10));
 
-        listActivities = new ActivityJList();
-
+        listActivities = new ActivityJList(model.getParkedActivites());
+        listActivities.setCellRenderer(new ActivityCellRenderer(ActivityCellRenderer.START_TIME));
         add(listActivities, BorderLayout.CENTER);
 
         btnAddActivity = new JButton("+ Add activity");
         btnAddActivity.setForeground(new Color(255, 255, 255));
         btnAddActivity.setBackground(new Color(0, 178, 34));
         add(btnAddActivity, BorderLayout.NORTH);
-        
+
         this.model = model;
         // add view as observer to the model
-       model.addObserver(this);
+        this.model.addObserver(this);
     }
 
     public ActivityJList getListActivities() {
@@ -53,14 +50,18 @@ public class ActivityBankPanel extends JPanel implements Observer{
     }
 
     // Called by the model
-	@Override
-	public void update(Observable o, Object arg) {
-		// load all activities
-		this.listActivities.removeAll();
-		//find a way to add all activity in the listModel
-				
-	}
-	
-    
-    
+    @Override
+    public void update(Observable o, Object arg) {
+        // load all activities
+        this.listActivities.removeAll();
+        DefaultListModel<Activity> listModel = new DefaultListModel<Activity>();
+        for (Activity a : model.getParkedActivites())
+            listModel.addElement(a);
+        //find a way to add all activity in the listModel
+        this.listActivities.setModel(listModel);
+        this.listActivities.invalidate();
+
+    }
+
+
 }

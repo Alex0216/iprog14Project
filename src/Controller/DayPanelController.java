@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.AgendaModel;
+import View.ActivityCellRenderer;
 import View.DayPanel;
 
 /**
@@ -15,5 +16,6 @@ public class DayPanelController {
         this.model = model;
         this.view = view;
         new ActivityTransferListController(view.getListDayActivities(), model);
+        this.view.getListDayActivities().setCellRenderer(new ActivityCellRenderer(ActivityCellRenderer.START_TIME));
     }
 }
