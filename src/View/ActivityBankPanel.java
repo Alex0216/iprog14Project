@@ -31,6 +31,7 @@ public class ActivityBankPanel extends JPanel implements Observer{
         setLayout(new BorderLayout(300, 10));
 
         listActivities = new ActivityJList();
+
         add(listActivities, BorderLayout.CENTER);
 
         btnAddActivity = new JButton("+ Add activity");
