@@ -3,8 +3,10 @@ package View;
 import Model.Activity;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Alexandre on 27/02/14.
@@ -23,6 +25,7 @@ public class ActivityJList extends JList<ActivityJList.ActivityListModel> {
         setFixedCellWidth(100);
 
         ActivityListModel listModel = new ActivityListModel(getTestData());
+        //ActivityListModel listModel = new ActivityListModel(data);
         setModel(listModel);
 
         setCellRenderer(new ActivityCellRenderer());
@@ -39,6 +42,24 @@ public class ActivityJList extends JList<ActivityJList.ActivityListModel> {
 
         return list;
     }
+    
+    public void addActivity(Activity activity){
+    	ActivityListModel activityListModel = (ActivityListModel) getModel();
+    	ArrayList<Activity> storedActivities = activityListModel.getActivities();
+    	storedActivities.add(activity);
+    	setModel(activityListModel);
+    }
+    
+    public void addAllActivities(List<Activity> activities){
+    	for(Activity activity : activities){
+    		this.addActivity(activity);
+    	}
+    }
+    
+    public Activity getElementAtIndex(int index){
+    	ActivityListModel activityListModel = (ActivityListModel) getModel();
+    	return (Activity) activityListModel.getElementAt(index);
+    }
 
 
     class ActivityListModel extends AbstractListModel {
@@ -46,6 +67,10 @@ public class ActivityJList extends JList<ActivityJList.ActivityListModel> {
 
         public ActivityListModel(ArrayList<Activity> activities) {
             this.activities = activities;
+        }
+        
+        protected ArrayList<Activity> getActivities(){
+        	return this.activities;
         }
 
         @Override

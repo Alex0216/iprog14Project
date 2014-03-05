@@ -6,9 +6,13 @@ import java.util.Observable;
 
 public class AgendaModel extends Observable {
 
-    List<Day> days = new ArrayList<Day>();
+	List<Day> days = new ArrayList<Day>();
     List<Activity> parkedActivites = new ArrayList<Activity>();
 
+    public List<Activity> getParkedActivites() {
+		return parkedActivites;
+	}
+    
     /**
      * adds create and add a new day to model with starting time (hours and minutes)
      */
