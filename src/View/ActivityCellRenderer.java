@@ -18,22 +18,22 @@ public class ActivityCellRenderer extends JPanel implements ListCellRenderer {
     public static final int DURATION = 1;
 
     private JLabel lblTime;
-	private JLabel lblName;
+    private JLabel lblName;
     private int format;
 
     public ActivityCellRenderer(int format) {
         setLayout(new BorderLayout(10, 10));
         this.format = format;
         lblTime = new JLabel("Time");
-		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
+        lblTime.setHorizontalAlignment(SwingConstants.CENTER);
         lblTime.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(lblTime, BorderLayout.WEST);
-		
-		lblName = new JLabel("Name");
-		lblName.setHorizontalAlignment(SwingConstants.CENTER);
-		add(lblName, BorderLayout.CENTER);
 
-	}
+        lblName = new JLabel("Name");
+        lblName.setHorizontalAlignment(SwingConstants.CENTER);
+        add(lblName, BorderLayout.CENTER);
+
+    }
 
     /*
     This is the method we have to override the customize how the activity will
@@ -58,16 +58,16 @@ public class ActivityCellRenderer extends JPanel implements ListCellRenderer {
 
         switch (activity.getType()) {
             case Activity.BREAK:
-                setBackground(new Color(255, 255, 0));
+                setBackground(ColorScheme.COLOR_BREAK);
                 break;
             case Activity.PRESENTATION:
-                setBackground(new Color(198, 217, 241));
+                setBackground(ColorScheme.COLOR_PRESENTATION);
                 break;
             case Activity.DISCUSSION:
-                setBackground(new Color(195, 214, 155));
+                setBackground(ColorScheme.COLOR_DISCUSSION);
                 break;
             case Activity.GROUP_WORK:
-                setBackground(new Color(253, 234, 218));
+                setBackground(ColorScheme.COLOR_GROUP_WORK);
                 break;
             default:
                 setBackground(list.getBackground());
@@ -88,9 +88,10 @@ public class ActivityCellRenderer extends JPanel implements ListCellRenderer {
     }
 
     public JLabel getLblTime() {
-		return lblTime;
-	}
-	public JLabel getLblName() {
-		return lblName;
-	}
+        return lblTime;
+    }
+
+    public JLabel getLblName() {
+        return lblName;
+    }
 }

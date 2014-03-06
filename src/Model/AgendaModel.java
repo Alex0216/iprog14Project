@@ -92,7 +92,7 @@ public class AgendaModel extends Observable {
         AgendaModel model = new AgendaModel();
 
         Day d = model.addDay(8, 0);
-        model.addActivity(new Activity("Introduction", "Intro to the meeting", 10, 0), d, 0);
+        model.addActivity(new Activity("Introduction", "Intro to the meeting", 10, 1), d, 0);
         model.addActivity(new Activity("Idea 1", "Presenting idea 1", 30, 0), d, 1);
         model.addActivity(new Activity("Working in groups", "Working on business model for idea 1", 35, 1), d, 2);
         model.addActivity(new Activity("Idea 1 discussion", "Discussing the results of idea 1", 15, 2), d, 3);

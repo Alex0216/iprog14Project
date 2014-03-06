@@ -6,10 +6,10 @@ public class Activity extends Observable {
 
 
     // The possible types of the activity
-    public static final int PRESENTATION = 1;
-    public static final int GROUP_WORK = 2;
-    public static final int DISCUSSION = 3;
-    public static final int BREAK = 4;
+    public static final int PRESENTATION = 0;
+    public static final int GROUP_WORK = 1;
+    public static final int DISCUSSION = 2;
+    public static final int BREAK = 3;
 
 
     String name;

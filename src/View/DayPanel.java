@@ -23,6 +23,7 @@ public class DayPanel extends JPanel implements Observer {
     private JLabel lblEndTime;
     private JLabel lblTotalTime;
     private ActivityJList listDayActivities;
+    private DrawingPanel drawingPanel;
 
 
     public DayPanel(Day day) {
@@ -75,6 +76,15 @@ public class DayPanel extends JPanel implements Observer {
         gbc_lblEndTime.gridy = 1;
         add(lblEndTime, gbc_lblEndTime);
 
+        drawingPanel = new DrawingPanel();
+        GridBagConstraints gbc_drawingPanel = new GridBagConstraints();
+        gbc_drawingPanel.gridheight = 3;
+        gbc_drawingPanel.insets = new Insets(0, 0, 5, 0);
+        gbc_drawingPanel.fill = GridBagConstraints.BOTH;
+        gbc_drawingPanel.gridx = 2;
+        gbc_drawingPanel.gridy = 0;
+        add(drawingPanel, gbc_drawingPanel);
+
         JLabel lblTotalTimetmp = new JLabel("Total Time:");
         GridBagConstraints gbc_lblTotalTimetmp = new GridBagConstraints();
         gbc_lblTotalTimetmp.insets = new Insets(0, 0, 5, 5);
@@ -101,7 +111,19 @@ public class DayPanel extends JPanel implements Observer {
         gbc_listDayActivities.gridy = 3;
         add(listDayActivities, gbc_listDayActivities);
 
+        setDrawingPaneProportion(day);
         day.addObserver(this);
+    }
+
+    private void setDrawingPaneProportion(Day day) {
+        float presentation = ((float) day.getLengthByType(Activity.PRESENTATION)) / day.getTotalLength();
+        float discussion = ((float) day.getLengthByType(Activity.DISCUSSION)) / day.getTotalLength();
+        float groupWork = ((float) day.getLengthByType(Activity.GROUP_WORK)) / day.getTotalLength();
+        float pause = ((float) day.getLengthByType(Activity.BREAK)) / day.getTotalLength();
+        float minPause = 0.35f;
+
+        drawingPanel.setTypeProportion(presentation, discussion, groupWork, pause, minPause);
+        drawingPanel.repaint();
     }
 
     public JSpinner getTimeSpinner() {
@@ -139,6 +161,11 @@ public class DayPanel extends JPanel implements Observer {
                 listModel.addElement(a);
             //find a way to add all activity in the listModel
             this.getListDayActivities().setModel(listModel);
+            setDrawingPaneProportion(day);
         }
+    }
+
+    public DrawingPanel getDrawingPanel() {
+        return drawingPanel;
     }
 }
