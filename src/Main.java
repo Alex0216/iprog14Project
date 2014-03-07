@@ -20,6 +20,7 @@ public class Main {
         } catch (Exception e) {
         }
 
+
         AgendaModel model = AgendaModel.getModelWithExampleData();
         MainView mainView = new MainView(model);
 
@@ -28,7 +29,7 @@ public class Main {
         window.pack();
         window.setSize(800, 800);
         window.setVisible(true);
-        
+
         MainController mainViewController = new MainController(model, mainView);
     }
 }
