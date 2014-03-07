@@ -5,8 +5,6 @@ import Model.AgendaModel;
 import View.ActivityBankPanel;
 import View.ActivityJList;
 
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -15,7 +13,7 @@ import java.awt.event.MouseListener;
 /**
  * Created by Alexandre on 25/02/14.
  */
-public class ActivityBankController implements ActionListener, MouseListener, ListSelectionListener {
+public class ActivityBankController implements ActionListener, MouseListener {
 
     private AgendaModel model;
     private ActivityBankPanel view;
@@ -75,21 +73,4 @@ public class ActivityBankController implements ActionListener, MouseListener, Li
 
     }
 
-
-    @Override
-    public void valueChanged(ListSelectionEvent e) {
-        if (e.getValueIsAdjusting() == false) {
-
-            if (view.getListActivities().getSelectedIndex() == -1) {
-                //No selection, disable fire button.
-                return;
-
-            } else {
-                //Selection, enable the fire button.
-                Activity selectedActivity = view.getListActivities().getSelectedValue();
-                EditActivityController controller = new EditActivityController(this.model, selectedActivity);
-            }
-        }
-
-    }
 }
