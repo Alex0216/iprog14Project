@@ -31,7 +31,7 @@ public class DayPanelController implements ChangeListener, ListDataListener, Mou
         this.view = view;
         this.day = day;
         new ActivityTransferListController(view.getListDayActivities(), day, model);
-        this.view.getListDayActivities().setCellRenderer(new ActivityCellRenderer(ActivityCellRenderer.START_TIME));
+        this.view.getListDayActivities().setCellRenderer(new ActivityCellRenderer(ActivityCellRenderer.START_TIME, day));
         this.view.getListDayActivities().addMouseListener(this);
 
         this.view.getTimeSpinner().addChangeListener(this);

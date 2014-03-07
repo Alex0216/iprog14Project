@@ -101,7 +101,6 @@ public class DayPanel extends JPanel implements Observer {
         add(lblTotalTime, gbc_lblTotalTime);
 
         listDayActivities = new ActivityJList(day.getActivities());
-        listDayActivities.setCellRenderer(new ActivityCellRenderer(ActivityCellRenderer.START_TIME));
 
 
         GridBagConstraints gbc_listDayActivities = new GridBagConstraints();
