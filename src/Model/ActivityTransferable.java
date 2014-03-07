@@ -11,9 +11,13 @@ import java.util.Arrays;
 public class ActivityTransferable implements Transferable {
 
     Activity activity;
+    Day from;
+    int position;
 
-    public ActivityTransferable(Activity activity) {
+    public ActivityTransferable(Activity activity, Day from, int position) {
         this.activity = activity;
+        this.from = from;
+        this.position = position;
     }
 
     public static DataFlavor[] supported = {new DataFlavor(Activity.class, "ActivityFlavor")};
@@ -31,10 +35,20 @@ public class ActivityTransferable implements Transferable {
     @Override
     public Object getTransferData(DataFlavor flavor) {
         if (isDataFlavorSupported(flavor)) {
-            return activity;
+            return this;
         }
         return null;
     }
 
+    public Day getDayFrom() {
+        return from;
+    }
 
+    public int getPosition() {
+        return position;
+    }
+
+    public Activity getActivity() {
+        return activity;
+    }
 }

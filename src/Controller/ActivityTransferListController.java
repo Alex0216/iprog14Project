@@ -3,6 +3,7 @@ package Controller;
 import Model.Activity;
 import Model.ActivityTransferable;
 import Model.AgendaModel;
+import Model.Day;
 import View.ActivityJList;
 
 import javax.swing.*;
@@ -16,11 +17,13 @@ import java.io.IOException;
  */
 public class ActivityTransferListController extends TransferHandler {
     private ActivityJList list;
-    private final AgendaModel model;
     int selected;
+    Day from;
+    AgendaModel model;
 
-    public ActivityTransferListController(ActivityJList list, AgendaModel model) {
+    public ActivityTransferListController(ActivityJList list, Day from, AgendaModel model) {
         this.list = list;
+        this.from = from;
         this.model = model;
         list.setDragEnabled(true);
         list.setDropMode(DropMode.INSERT);
@@ -44,10 +47,10 @@ public class ActivityTransferListController extends TransferHandler {
      * put the shape into a tranferrable form
      */
     @Override
-    public Transferable createTransferable(JComponent source) {
+    public ActivityTransferable createTransferable(JComponent source) {
         selected = list.getSelectedIndex();
         dragged = (Activity) list.getSelectedValue();
-        return new ActivityTransferable(dragged);
+        return new ActivityTransferable(dragged, from, list.getSelectedIndex());
     }
 
     /**
@@ -58,8 +61,9 @@ public class ActivityTransferListController extends TransferHandler {
 
         if (source != list)
             return;
-        if (action == TransferHandler.MOVE)
-            ((DefaultListModel) list.getModel()).remove(selected);
+        if (action == TransferHandler.MOVE) {
+//            ((DefaultListModel) list.getModel()).remove(selected);
+        }
 
     }
 
@@ -84,11 +88,12 @@ public class ActivityTransferListController extends TransferHandler {
         if (!supp.isDrop())
             return false;
 
-        // Fetch the Transferable and its data
         Transferable t = supp.getTransferable();
-        Activity data = null;
+
+
+        ActivityTransferable data = null;
         try {
-            data = (Activity) t.getTransferData(ActivityTransferable.supported[0]);
+            data = (ActivityTransferable) t.getTransferData(ActivityTransferable.supported[0]);
         } catch (UnsupportedFlavorException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -98,8 +103,8 @@ public class ActivityTransferListController extends TransferHandler {
         // Fetch the drop location
         JList.DropLocation loc = (JList.DropLocation) supp.getDropLocation();
         // Insert the data at this location
-        ((DefaultListModel) list.getModel()).add(loc.getIndex(), data);
-
+        ((DefaultListModel) list.getModel()).add(loc.getIndex(), data.getActivity());
+        model.moveActivity(data.getDayFrom(), data.getPosition(), from, loc.getIndex());
 
         return true;
 
