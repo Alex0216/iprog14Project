@@ -1,5 +1,7 @@
 package View;
 
+import Model.Day;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -17,9 +19,9 @@ public class DaysPanel extends JPanel {
         setLayout(new GridLayout(1, 10, 10, 10));
 
 	}
-	
-	public DayPanel addDayPanel() {
-		DayPanel dayPanel = new DayPanel();
+
+    public DayPanel addDayPanel(Day day) {
+        DayPanel dayPanel = new DayPanel(day);
 
         add(dayPanel);
         this.updateUI();

@@ -83,6 +83,7 @@ public class Day extends Observable {
         return act;
     }
 
+
     /**
      * moves activity inside one day
      * this method will be called when needed from the model
@@ -99,4 +100,7 @@ public class Day extends Observable {
     }
 
 
+    public List<Activity> getActivities() {
+        return activities;
+    }
 }
