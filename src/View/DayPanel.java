@@ -49,7 +49,7 @@ public class DayPanel extends JPanel implements Observer {
         dateModel.setValue(c.getTime());
         timeSpinner.setModel(dateModel);
         JSpinner.DateEditor de_timeSpinner = new JSpinner.DateEditor(timeSpinner, "HH:mm");
-        de_timeSpinner.getTextField().setEditable(false);
+        de_timeSpinner.getTextField().setEditable(true);
         timeSpinner.setEditor(de_timeSpinner);
         GridBagConstraints gbc_timeSpinner = new GridBagConstraints();
         gbc_timeSpinner.insets = new Insets(0, 0, 5, 5);
