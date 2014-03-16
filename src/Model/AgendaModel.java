@@ -69,10 +69,13 @@ public class AgendaModel extends Observable implements Serializable {
             newday.addActivity(act, newposition);
         } else if (oldday != null && newday == null) {
             Activity act = oldday.removeActivity(oldposition);
-            addParkedActivity(act);
+            parkedActivites.add(newposition, act);
         } else if (oldday != null && newday != null) {
             Activity activity = oldday.removeActivity(oldposition);
             newday.addActivity(activity, newposition);
+        } else if (oldday == null && newday == null) {
+            Activity act = parkedActivites.remove(oldposition);
+            parkedActivites.add(newposition, act);
         }
         setChanged();
         notifyObservers();
