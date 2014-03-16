@@ -27,6 +27,8 @@ public class DayPanel extends JPanel implements Observer {
 
 
     public DayPanel(Day day) {
+        setPreferredSize(new Dimension(250, 0));
+
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[]{0, 0, 0, 0};
         gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0};
