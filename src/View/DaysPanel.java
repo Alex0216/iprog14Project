@@ -17,8 +17,9 @@ public class DaysPanel extends JPanel {
 		this.dayPanelList = new ArrayList<DayPanel>();
 
         setLayout(new GridLayout(1, 10, 10, 10));
+        this.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
 
-	}
+    }
 
     public DayPanel addDayPanel(Day day) {
         DayPanel dayPanel = new DayPanel(day);
