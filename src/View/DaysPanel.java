@@ -9,12 +9,14 @@ import java.util.List;
 
 /**
  * Created by Yeonni on 02/03/14.
+ * <p/>
+ * Class that contain multiple DayPanel
  */
 public class DaysPanel extends JPanel {
-	public List<DayPanel> dayPanelList;
-		
-	public DaysPanel() {
-		this.dayPanelList = new ArrayList<DayPanel>();
+    public List<DayPanel> dayPanelList;
+
+    public DaysPanel() {
+        this.dayPanelList = new ArrayList<DayPanel>();
 
         setLayout(new GridLayout(1, 10, 10, 10));
         this.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
@@ -26,9 +28,9 @@ public class DaysPanel extends JPanel {
 
         add(dayPanel);
         this.updateUI();
-		
-		this.dayPanelList.add(dayPanel);
-		return dayPanel;
-	}
+
+        this.dayPanelList.add(dayPanel);
+        return dayPanel;
+    }
 
 }

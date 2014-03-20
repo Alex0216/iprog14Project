@@ -15,15 +15,15 @@ import java.util.Observer;
  */
 public class DaysPanelController implements Observer {
 
-	private AgendaModel agendaModel;
-	private DaysPanel daysView;
-	private List<DayPanelController> dayPanelControllerList;
-	
+    private AgendaModel agendaModel;
+    private DaysPanel daysView;
+    private List<DayPanelController> dayPanelControllerList;
+
     public DaysPanelController(AgendaModel model, DaysPanel view) {
-    	model.addObserver(this);
-    	this.agendaModel = model;
-    	this.daysView = view;
-    	this.dayPanelControllerList = new ArrayList<DayPanelController>();
+        model.addObserver(this);
+        this.agendaModel = model;
+        this.daysView = view;
+        this.dayPanelControllerList = new ArrayList<DayPanelController>();
 
 
         for (int i = 0; i < model.getNbDays(); ++i) {
@@ -32,8 +32,8 @@ public class DaysPanelController implements Observer {
     }
 
 
-	@Override
-	public void update(Observable o, Object arg) {
+    @Override
+    public void update(Observable o, Object arg) {
 
     }
 

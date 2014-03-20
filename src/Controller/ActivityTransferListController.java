@@ -16,10 +16,13 @@ import java.io.IOException;
  * Project: Project.Controller.${FILE_NAME}
  */
 public class ActivityTransferListController extends TransferHandler {
-    private ActivityJList list;
     int selected;
     Day from;
     AgendaModel model;
+    Activity dragged;
+    private ActivityJList list;
+
+    // ---------------- SOURCE methods
 
     public ActivityTransferListController(ActivityJList list, Day from, AgendaModel model) {
         this.list = list;
@@ -30,8 +33,6 @@ public class ActivityTransferListController extends TransferHandler {
         list.setTransferHandler(this);
     }
 
-    // ---------------- SOURCE methods
-
     /**
      * data transfer semantic
      */
@@ -41,10 +42,8 @@ public class ActivityTransferListController extends TransferHandler {
         return TransferHandler.MOVE;
     }
 
-    Activity dragged;
-
     /**
-     * put the shape into a tranferrable form
+     * Create a transferable with the activity
      */
     @Override
     public ActivityTransferable createTransferable(JComponent source) {
@@ -58,13 +57,7 @@ public class ActivityTransferListController extends TransferHandler {
      */
     @Override
     protected void exportDone(JComponent source, Transferable data, int action) {
-
-        if (source != list)
-            return;
-        if (action == TransferHandler.MOVE) {
-//            ((DefaultListModel) list.getModel()).remove(selected);
-        }
-
+        //Nothing to do here because of the Observer pattern!
     }
 
     // ---------------- TARGET methods

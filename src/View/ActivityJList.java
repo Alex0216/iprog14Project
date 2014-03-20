@@ -26,6 +26,7 @@ public class ActivityJList extends JList<Activity> implements MouseMotionListene
         setFixedCellWidth(100);
 
         this.addMouseMotionListener(this);
+        //Populate the list
         DefaultListModel<Activity> listModel = new DefaultListModel<Activity>();
         for (Activity a : activities)
             listModel.addElement(a);
@@ -38,6 +39,10 @@ public class ActivityJList extends JList<Activity> implements MouseMotionListene
 
     }
 
+    /*
+    When the mouse hover over a cell in the list, we change the cursor
+    This was a request from a student in a comment on our screencast
+     */
     @Override
     public void mouseMoved(MouseEvent e) {
         final int x = e.getX();

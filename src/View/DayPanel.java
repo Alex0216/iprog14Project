@@ -27,6 +27,12 @@ public class DayPanel extends JPanel implements Observer {
 
 
     public DayPanel(Day day) {
+
+        /*
+        setPreferredSize actually act like a minimum size(!)
+        this allow us to give the daypanel a min size so the daypanels don't
+        become too narrow to read
+         */
         setPreferredSize(new Dimension(250, 0));
 
         GridBagLayout gridBagLayout = new GridBagLayout();
@@ -43,6 +49,9 @@ public class DayPanel extends JPanel implements Observer {
         gbc_lblStartTime.gridy = 0;
         add(lblStartTime, gbc_lblStartTime);
 
+
+        //JSPinner use to input the start time
+        //A DateEditor is used to restrict the range of value possible
         timeSpinner = new JSpinner();
         SpinnerDateModel dateModel = new SpinnerDateModel(new Date(), null, null, Calendar.MINUTE);
         Calendar c = Calendar.getInstance();
@@ -78,6 +87,8 @@ public class DayPanel extends JPanel implements Observer {
         gbc_lblEndTime.gridy = 1;
         add(lblEndTime, gbc_lblEndTime);
 
+        //This is the square graph thing that shows the percentage of each
+        //activity type during the day
         drawingPanel = new DrawingPanel();
         GridBagConstraints gbc_drawingPanel = new GridBagConstraints();
         gbc_drawingPanel.gridheight = 3;
@@ -116,6 +127,10 @@ public class DayPanel extends JPanel implements Observer {
         day.addObserver(this);
     }
 
+    /*
+    Method that calculate the proportion of each activity type of the day
+    and send them to the drawingPanel
+     */
     private void setDrawingPaneProportion(Day day) {
         float presentation = ((float) day.getLengthByType(Activity.PRESENTATION)) / day.getTotalLength();
         float discussion = ((float) day.getLengthByType(Activity.DISCUSSION)) / day.getTotalLength();

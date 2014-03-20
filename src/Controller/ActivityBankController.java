@@ -44,7 +44,7 @@ public class ActivityBankController implements ActionListener, MouseListener {
             int index = list.locationToIndex(e.getPoint());
             Activity selectedActivity = (Activity) view.getListActivities().getModel().getElementAt(index);
             // Open up EditActivityController with selected Activity
-            EditActivityController controller = new EditActivityController(this.model, selectedActivity);
+            EditActivityController controller = new EditActivityController(this.model, selectedActivity, null);
         }
 
     }

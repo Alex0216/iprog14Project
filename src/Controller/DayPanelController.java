@@ -7,11 +7,8 @@ import View.ActivityCellRenderer;
 import View.ActivityJList;
 import View.DayPanel;
 
-import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.event.ListDataEvent;
-import javax.swing.event.ListDataListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Calendar;
@@ -20,7 +17,7 @@ import java.util.Date;
 /**
  * Created by Alexandre on 25/02/14.
  */
-public class DayPanelController implements ChangeListener, ListDataListener, MouseListener {
+public class DayPanelController implements ChangeListener, MouseListener {
 
     AgendaModel model;
     Day day;
@@ -35,7 +32,6 @@ public class DayPanelController implements ChangeListener, ListDataListener, Mou
         this.view.getListDayActivities().addMouseListener(this);
 
         this.view.getTimeSpinner().addChangeListener(this);
-        this.view.getListDayActivities().getModel().addListDataListener(this);
     }
 
     @Override
@@ -45,7 +41,7 @@ public class DayPanelController implements ChangeListener, ListDataListener, Mou
             int index = list.locationToIndex(e.getPoint());
             Activity selectedActivity = (Activity) view.getListDayActivities().getModel().getElementAt(index);
             // Open up EditActivityController with selected Activity
-            EditActivityController controller = new EditActivityController(this.model, selectedActivity);
+            EditActivityController controller = new EditActivityController(this.model, selectedActivity, day);
         }
 
     }
@@ -87,20 +83,4 @@ public class DayPanelController implements ChangeListener, ListDataListener, Mou
         }
     }
 
-    @Override
-    public void intervalAdded(ListDataEvent e) {
-        DefaultListModel<Activity> listModel = (DefaultListModel<Activity>) e.getSource();
-        Activity act = listModel.get(e.getIndex0());
-
-    }
-
-    @Override
-    public void intervalRemoved(ListDataEvent e) {
-
-    }
-
-    @Override
-    public void contentsChanged(ListDataEvent e) {
-
-    }
 }

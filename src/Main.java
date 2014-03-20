@@ -24,11 +24,10 @@ public class Main {
         AgendaModel model = AgendaModel.getModelWithExampleData();
         MainView mainView = new MainView(model);
 
-        JFrame window = mainView;
-    	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.pack();
-        window.setSize(800, 800);
-        window.setVisible(true);
+        mainView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainView.pack();
+        mainView.setSize(800, 800);
+        mainView.setVisible(true);
 
         MainController mainViewController = new MainController(model, mainView);
     }

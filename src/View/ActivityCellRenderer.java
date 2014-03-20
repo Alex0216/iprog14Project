@@ -5,8 +5,6 @@ import Model.Day;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  * Created by group11 on 25/02/14.
@@ -15,7 +13,7 @@ import java.util.Observer;
  * where the view is. The view also has a color corresponding to the activity.
  * Clicking an activity should bring the EditActivityFrame
  */
-public class ActivityCellRenderer extends JPanel implements ListCellRenderer, Observer {
+public class ActivityCellRenderer extends JPanel implements ListCellRenderer {
 
     public static final int START_TIME = 0;
     public static final int DURATION = 1;
@@ -38,9 +36,6 @@ public class ActivityCellRenderer extends JPanel implements ListCellRenderer, Ob
         lblName.setHorizontalAlignment(SwingConstants.CENTER);
         add(lblName, BorderLayout.CENTER);
         this.day = day;
-        if (day != null)
-            day.addObserver(this);
-
     }
 
     /*
@@ -51,6 +46,9 @@ public class ActivityCellRenderer extends JPanel implements ListCellRenderer, Ob
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         Activity activity = (Activity) value;
 
+        //The activity can either show the duration or the start time of the activity
+        //If the ActivityJList is being used in a DayPanel, the start time is shown
+        //If the ActivityJList is being used in a ActivityBankPanel, the duration is shown
         String time;
         switch (format) {
             case START_TIME:
@@ -74,6 +72,7 @@ public class ActivityCellRenderer extends JPanel implements ListCellRenderer, Ob
         lblName.setText(activity.getName());
 
 
+        //Set the color of the cell depending on the activity type
         switch (activity.getType()) {
             case Activity.BREAK:
                 setBackground(ColorScheme.COLOR_BREAK);
@@ -113,8 +112,4 @@ public class ActivityCellRenderer extends JPanel implements ListCellRenderer, Ob
         return lblName;
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-
-    }
 }

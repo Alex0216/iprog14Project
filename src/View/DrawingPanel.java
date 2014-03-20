@@ -3,6 +3,10 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 
+/*
+Class for the graph on the top right of the DayPanel that
+show the percentage of each activity type in a day
+ */
 public class DrawingPanel extends JComponent {
 
     float presentation, discussion, group_work, pause, minPause;

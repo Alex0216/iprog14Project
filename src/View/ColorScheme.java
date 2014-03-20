@@ -5,6 +5,8 @@ import java.awt.*;
 /**
  * Created by Alexandre on 06/03/14.
  * Project: Project.View.${FILE_NAME}
+ * <p/>
+ * Class defining the Color we use in the app
  */
 public class ColorScheme {
 

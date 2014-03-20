@@ -13,24 +13,24 @@ import java.awt.event.ActionListener;
  */
 public class MainController implements ActionListener {
 
-	private MainView mainView;
-	private AgendaModel agendaModel;
-	
-	private DaysPanelController daysPanelController;
-	private ActivityBankController activityBankController;
-	
+    private MainView mainView;
+    private AgendaModel agendaModel;
+
+    private DaysPanelController daysPanelController;
+    private ActivityBankController activityBankController;
+
     public MainController(AgendaModel model, MainView view) {
-    	this.mainView = view;
-    	this.agendaModel = model;
-    	
-    	this.mainView.addBtnAddDayActionListener(this);
-    	
-    	DaysPanel daysView = mainView.getDaysPanel();
-    	this.daysPanelController = new DaysPanelController(this.agendaModel, daysView);
+        this.mainView = view;
+        this.agendaModel = model;
+
+        this.mainView.addBtnAddDayActionListener(this);
+
+        DaysPanel daysView = mainView.getDaysPanel();
+        this.daysPanelController = new DaysPanelController(this.agendaModel, daysView);
 
         this.activityBankController = new ActivityBankController(this.agendaModel, mainView.getActivityPanel());
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (this.mainView.isBtnAddDay(e.getSource())) {

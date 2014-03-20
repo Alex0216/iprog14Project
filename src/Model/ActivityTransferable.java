@@ -7,6 +7,8 @@ import java.util.Arrays;
 /**
  * Created by Alexandre on 28/02/14.
  * Project: Project.Model.${FILE_NAME}
+ * <p/>
+ * Transferable class use for the drag and drop
  */
 public class ActivityTransferable implements Transferable {
 
@@ -14,6 +16,7 @@ public class ActivityTransferable implements Transferable {
     Day from;
     int position;
 
+    //Day from is null when it comes from the ParkedActivity area
     public ActivityTransferable(Activity activity, Day from, int position) {
         this.activity = activity;
         this.from = from;
